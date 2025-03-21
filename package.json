@@ -1,0 +1,23 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "Typescript NodeJs and React Project",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev":"tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sarahlash92/NodeJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sarahlash92/NodeJS/issues"
+  },
+  "homepage": "https://github.com/Sarahlash92/NodeJS#readme",
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}

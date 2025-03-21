@@ -1,2 +1,2 @@
 # NodeJS
-NodeJS React Full stack project
+Typescript NodeJS React Full stack project
