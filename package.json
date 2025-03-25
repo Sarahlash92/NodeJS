@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/Sarahlash92/NodeJS#readme",
   "dependencies": {
-    "express": "^4.21.2"
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.13",
+    "express": "^4.21.2",
+    "typescript": "^5.8.2"
   }
 }
