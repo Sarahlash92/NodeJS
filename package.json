@@ -1,11 +1,10 @@
 {
-  "name": "typescript",
+  "name": "ts-node",
   "version": "1.0.0",
-  "description": "Typescript NodeJs and React Project",
-  "main": "index.ts",
+  "description": "Creating backend with nodeJs and typescript",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev":"tsc -w"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -17,7 +16,7 @@
     "url": "https://github.com/Sarahlash92/NodeJS/issues"
   },
   "homepage": "https://github.com/Sarahlash92/NodeJS#readme",
-  "devDependencies": {
-    "typescript": "^5.8.2"
+  "dependencies": {
+    "express": "^4.21.2"
   }
 }
