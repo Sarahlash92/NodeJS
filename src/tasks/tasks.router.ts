@@ -22,9 +22,13 @@ export class TasksRouter {
     private initializeRoutes(){
         this.router.get("/", getTaskValidator, 
             async (req: Request, res: Response) => {
-            const result = validationResult(req);    
-            const allTasks = await this.taskController.handleGetTasks(req, res);
-            res.json(allTasks);
+            const result = validationResult(req);  
+            if (result.isEmpty()){
+                const allTasks = await this.taskController.handleGetTasks(req, res);
+                res.status(StatusCodes.OK).json(allTasks);
+            } else {
+                res.status(StatusCodes.BAD_REQUEST).json(result.array());
+            } 
         })
 
         this.router.post("/create", createTaskValidator,

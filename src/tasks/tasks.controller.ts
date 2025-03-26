@@ -6,6 +6,8 @@ import { Request, Response } from "express"
 import { TaskService } from "./task.service"
 import { UpdateTaskProvider } from "./providors/updateTask.provider"
 import { matchedData } from "express-validator"
+import { ITaskPagination } from "./interfaces/taskPagination.interface"
+import { GetTasksProvider } from "./providors/getTasks.provider"
 
 @injectable()
 export class TasksController {
@@ -13,11 +15,17 @@ export class TasksController {
         @inject(UserController) private userController: UserController,
         @inject(TaskService) private taskService : TaskService,
         @inject(UpdateTaskProvider) private updateTaskProvidor : UpdateTaskProvider,
-        ) {}
+        @inject(GetTasksProvider) private getTasksProvider : GetTasksProvider,
+    ) {}
 
     public async handleGetTasks(req: Request, res: Response) {
-        const tasks = await this.taskService.findAllTasks;
-        return tasks;
+        const validatedData: Partial<ITaskPagination> = matchedData(req);
+        try{
+            const tasks: { data: ITask[]; meta: {} } = await this.getTasksProvider.findAllTasks(validatedData)
+            return tasks;
+        } catch (error: any){
+            throw new Error(error);
+        } 
     }
 
     public async handlePostTasks(req: Request<{},{},ITask>, res: Response) {
