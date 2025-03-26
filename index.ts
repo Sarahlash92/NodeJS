@@ -5,14 +5,22 @@ import { addRoutes } from "./src/config/routes.config";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv"
 import { responseFormatter } from "./src/middleware/responseFormatter.middleware";
+import cors, { CorsOptions } from 'cors';
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
 
+let corsOptions: CorsOptions = {
+    origin: "http://xxxx.com",
+};
+
+app.use(cors());
+
 app.use(responseFormatter);
 app.use(express.json());
+
 addRoutes(app);
 
 async function bootstrap() {

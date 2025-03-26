@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/Sarahlash92/NodeJS#readme",
   "dependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.13",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "env": "^0.0.2",
     "express": "^4.21.2",
