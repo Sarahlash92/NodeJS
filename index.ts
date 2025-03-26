@@ -1,15 +1,17 @@
 import "reflect-metadata";
 
-import express, {Request, Response } from "express";
+import express from "express";
 import { addRoutes } from "./src/config/routes.config";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv"
+import { responseFormatter } from "./src/middleware/responseFormatter.middleware";
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
 
+app.use(responseFormatter);
 app.use(express.json());
 addRoutes(app);
 
