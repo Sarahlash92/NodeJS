@@ -26,5 +26,4 @@ export class TasksRouter {
             res.json(newTask);
         })
     }
-
 }
