@@ -1,13 +1,26 @@
-import { injectable } from "inversify"
+import { injectable, inject } from "inversify"
+import { UserController } from "../user/user.controller"
 
 @injectable()
 export class TasksController {
-    constructor() {}
+    constructor(@inject(UserController)private userController: UserController) {}
 
-    public createTask() {
-        return {
+    public handlePostTasks() {
+        return [{
             title: "this is a title",
             description: "Task description",
-        }
+        }]
+    }
+
+    public handleGetTasks() {
+        return [{
+
+        }]
+    }
+
+    public handlePatchTasks() {
+        return [{
+
+        }]
     }
 }

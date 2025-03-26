@@ -1,5 +1,4 @@
 import { Router, Response, Request } from "express";
-import { container } from "../config/container";
 import { TasksController } from "./tasks.controller";
 import { injectable, inject } from "inversify";
 
@@ -14,8 +13,16 @@ export class TasksRouter {
     }
 
     private initializeRoutes(){
+        this.router.get("/", (req: Request, res: Response) => {
+            const newTask = this.taskController.handleGetTasks();
+            res.json(newTask);
+        })
         this.router.post("/create", (req: Request, res: Response) => {
-            const newTask = this.taskController.createTask();
+            const newTask = this.taskController.handlePostTasks();
+            res.json(newTask);
+        })
+        this.router.patch("/update", (req: Request, res: Response) => {
+            const newTask = this.taskController.handlePatchTasks();
             res.json(newTask);
         })
     }
