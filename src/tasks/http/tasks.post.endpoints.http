@@ -1,9 +1,8 @@
-GET http://localhost:3001/tasks/
+GET http://localhost:3001/tasks/?limit=3&page=1&order=asc
 Content-Type: application/json 
 
 POST http://localhost:3001/tasks/create
 Content-Type: application/json 
-
 {
     "title": "TEST",
     "description": "Description",
@@ -14,8 +13,7 @@ Content-Type: application/json
 
 PATCH http://localhost:3001/tasks/update
 Content-Type: application/json 
-
 {
     "_id":"67e43b8aef8e138bb7d4b5e8",
-    "title": "change working",
+    "title": "change working"
 }

@@ -13,10 +13,10 @@ export const createTaskValidator = checkSchema({
             },
             errorMessage: "Title should be 100 chars"
         },
-        trim:true,
+        trim: true,
     },
     description: {
-        in:["body"],
+        in: ["body"],
         notEmpty: true,
         isString: true,
         trim: true,
