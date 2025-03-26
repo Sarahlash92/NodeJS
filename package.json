@@ -4,6 +4,9 @@
   "description": "Creating backend with nodeJs and typescript",
   "main": "index.js",
   "scripts": {
+    "start:dev": "nodemon index.ts",
+    "start": "node dist/index.js",
+    "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +23,8 @@
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.13",
     "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   }
 }
