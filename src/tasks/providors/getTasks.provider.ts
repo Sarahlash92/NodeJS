@@ -32,7 +32,7 @@ export class GetTasksProvider {
 
         return {
             data: tasks, 
-            meta: {totalTasks, completedTasks, inProgressTasks},
+            meta: {totalTasks, todoTasks, completedTasks, inProgressTasks},
         }
     }
 }
