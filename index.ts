@@ -5,13 +5,12 @@ import { addRoutes } from "./src/config/routes.config";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv"
 
+dotenv.config();
+
 const app = express();
 const port = process.env.PORT;
 
-app.get("/", (req: Request, res: Response ) => {
-    res.send("Express application");
-});
-
+app.use(express.json());
 addRoutes(app);
 
 async function bootstrap() {
