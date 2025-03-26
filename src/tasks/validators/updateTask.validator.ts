@@ -1,8 +1,14 @@
 import { checkSchema } from "express-validator";
 
-export const createTaskValidator = checkSchema({
+export const updateTaskValidator = checkSchema({
+    _id: {
+        in: ["body"],
+        notEmpty: true,
+        isMongoId: true,
+        errorMessage: "Valid id is required"
+    },
     title: {
-        in:["body"], //query? 
+        in:["body"],
         optional: true,
         errorMessage: "title is required",
         isString: true,

@@ -4,13 +4,16 @@ import { IPartialTaskWithId, ITask } from "./task.interface"
 import { Document } from "mongoose"
 import { Request, Response } from "express"
 import { TaskService } from "./task.service"
+import { UpdateTaskProvider } from "./providors/updateTask.provider"
+import { matchedData } from "express-validator"
 
 @injectable()
 export class TasksController {
     constructor(
         @inject(UserController) private userController: UserController,
-        @inject(TaskService) private taskService : TaskService
-       ) {}
+        @inject(TaskService) private taskService : TaskService,
+        @inject(UpdateTaskProvider) private updateTaskProvidor : UpdateTaskProvider,
+        ) {}
 
     public async handleGetTasks(req: Request, res: Response) {
         const tasks = await this.taskService.findAllTasks;
@@ -24,16 +27,15 @@ export class TasksController {
         return task;
     }
 
-    public async handlePatchTasks(req: Request<{},{},IPartialTaskWithId>, res: Response) {
-        const task = await this.taskService.findById(req.body._id);
-        if(task) {
-            task.title = req.body.title? req.body.title : task.title;
-            task.description = req.body.description? req.body.description : task.description;
-            task.dueDate = req.body.dueDate? req.body.dueDate : task.dueDate;
-            task.status = req.body.status? req.body.status : task.status;
-            task.priority = req.body.priority? req.body.priority : task.priority;
-            await task.save();
+    public async handlePatchTasks(
+        req: Request<{},{},IPartialTaskWithId>,
+        res: Response
+    ): Promise<Document> {
+        const validatedData: IPartialTaskWithId = matchedData(req);
+        try {
+            return await this.updateTaskProvidor.updateTask(validatedData);
+        }catch (error: any) {
+            throw new Error(error);
         }
-        return task;
     }
 }
