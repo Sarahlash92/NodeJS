@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { Task } from "./task.schema";
 import { FilterQuery, Model } from "mongoose";
-import { IPartialTaskWithId, ITask } from "./task.interface";
+import { ITask } from "./task.interface";
 import { ITaskPagination } from "./interfaces/taskPagination.interface";
 
 
